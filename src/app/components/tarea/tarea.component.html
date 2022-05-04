@@ -1,0 +1,26 @@
+<div class="contenedor">
+    <div class="row">
+        <div class="col">
+            <input type="text" placeholder="Ingrese tarea..." [(ngModel)]="nombreTarea"
+            (keyup.enter)="agregarTarea()">
+        </div>
+        <div class="card" *ngIf="listTareas.length===0">No hay tareas para mostrar</div>
+        <div class="tareas">
+            <ul class="lista">
+                <li class="item" *ngFor="let listaTareas of listTareas; let i = index">
+                    <span class="cursor" (click)="actualizarTarea(listaTareas, i)">
+                        <i [ngClass]="listaTareas.estado ? 'fa fa-check-circle': 'fa fa-circle-thin' "></i>
+                        <!-- <i class="fa fa-circle-thin" aria-hidden="true"></i>
+                        <i class="fa fa-check-circle" aria-hidden="true"></i> -->
+                    </span>
+                        {{listaTareas.nombre}}
+                    <span class="cursor eliminar" (click)="eliminarTarea(i)">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </span>
+                    
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
